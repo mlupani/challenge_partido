@@ -1,11 +1,11 @@
 export interface Team {
     teamName: string,
-    players?: Player[]
+    players: Player[]
 }
 
 export interface Player {
-    id: string,
-    name: string,
+    player_id: string,
+    player_name: string,
     team_name: string,
     player_image?: string
 }

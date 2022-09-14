@@ -11,7 +11,7 @@ const useManageTeams = () => {
         alert('El equipo ya existe')
         return
       }
-      if(name)  setTeams([...teams, {teamName: name} ])
+      if(name)  setTeams([...teams, {teamName: name, players:[]} ])
     }
 
     const deleteTeam = (name: string) => {
