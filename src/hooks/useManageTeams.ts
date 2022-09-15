@@ -16,6 +16,7 @@ export const useManageTeams = () => {
   }
 
   const deleteTeam = (name: string) => {
+    if (!confirm('Desea Eliminar el equipo?')) return false
     const newTeams = teams.filter(t => t.teamName !== name)
     setTeams(newTeams)
   }
@@ -39,6 +40,7 @@ export const useManageTeams = () => {
   }
 
   const deleteFromTeam = (playerId: string) => {
+    if (!confirm('Desea quitar el jugador del equipo?')) return false
     const newTeams: Team[] = teams.map(t => {
       return {
         teamName: t.teamName,

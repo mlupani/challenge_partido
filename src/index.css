@@ -1,3 +1,10 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    background-image: url('bg-football.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -12,19 +12,21 @@ interface Props {
 
 export const PlayerList = ({ teamName, players, deleteTeam, editTeam, setSelectedPlayerState, deleteFromTeam }: Props) => {
   return (
-    <div className='flex justify-center flex-col items-center mt-10 mx-8 min-h-96 w-80 border-2 border-blue-700'>
-        <button onClick={() => deleteTeam(teamName)} >Eliminar equipo</button>
-        <div className='flex justify-between'>
-            <h3 className='mr-3'>{teamName}</h3>
-            <button className='underline' onClick={() => editTeam(teamName)}>Editar</button>
+    <div className='flex flex-col justify-between mt-10 mx-8 h-max w-80 border-2 border-gray-700 bg-white shadow-2xl shadow-black opacity-100'>
+        <div className="flex">
+            <div className="col-sm-10 flex items-center justify-center text-center"><h3 className='text-lg'>{teamName}</h3></div>
+            <div className="col-sm-2 flex items-end justify-end gap-1">
+                <button title="Eliminar equipo" onClick={() => deleteTeam(teamName)} ><i className="bi bi-trash-fill"></i></button>
+                <button title="Editar equipo" onClick={() => editTeam(teamName)}><i className="bi bi-pencil-fill"></i></button>
+            </div>
         </div>
-        <ol className='w-60'>
+        <div className='flex flex-col justify-center items-center '>
             {
-                players?.map(player => <PlayerItem key={player.player_id} player={player} setSelectedPlayerState={setSelectedPlayerState} deleteFromTeam={deleteFromTeam} />)
+                players?.map(player => <PlayerItem key={player.player_id} player={player} setSelectedPlayerState={setSelectedPlayerState} deleteFromTeam={deleteFromTeam} del={true} />)
             }
-        </ol>
-        <p>Equipo formado: {teamName && players?.length ? 'OK' : 'No formado'} </p>
-        <p>Equipo completado: {teamName && players?.length === 5 ? 'OK' : 'Incompleto'} </p>
+            <p>Equipo formado: {teamName && players?.length ? <span className='text-success font-bold'>OK!</span> : <span className='text-danger font-bold'>No Formado</span>} </p>
+            <p>Equipo completado: {teamName && players?.length === 5 ? <span className='text-success font-bold'>OK!</span> : <span className='text-danger font-bold'>Incompleto</span>} </p>
+        </div>
     </div>
   )
 }
