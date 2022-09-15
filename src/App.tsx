@@ -11,20 +11,30 @@ function App () {
         {
           teams.length
             ? teams.map((team, i) => (
-                <div className='flex justify-center items-center flex-row' key={i}>
-                <div className={`flex flex-col mx-3 ${i === 0 ? 'hidden' : ''}`}>
-                  <button disabled={!selectedPlayer} onClick={() => AddToTeam(i)} ><i className="bi bi-arrow-right-square-fill text-3xl"></i></button>
-                </div>
-                <PlayerList teamName={team.teamName} players={team.players} deleteTeam={deleteTeam} editTeam={editTeam} setSelectedPlayerState={setSelectedPlayerState} deleteFromTeam={deleteFromTeam} />
-                <div className={`flex flex-col mx-3 ${i === 1 ? 'hidden' : ''}`}>
-                  <button disabled={!selectedPlayer} onClick={() => AddToTeam(i)} ><i className="bi bi-arrow-left-square-fill text-3xl"></i></button>
+              <>
+                <div className='flex justify-center flex-row' key={i}>
+                  {
+                    selectedPlayer
+                      ? <div className={`flex flex-col ml-5 justify-center ${i === 0 ? 'hidden' : ''}`}>
+                        <button onClick={() => AddToTeam(i)} ><i className="bi bi-arrow-right-square-fill text-3xl text-white"></i></button>
+                      </div>
+                      : null
+                  }
+                  <PlayerList teamName={team.teamName} players={team.players} deleteTeam={deleteTeam} editTeam={editTeam} setSelectedPlayerState={setSelectedPlayerState} deleteFromTeam={deleteFromTeam} />
+                  {
+                    selectedPlayer
+                      ? <div className={`flex flex-col mr-5 justify-center ${i === 1 ? 'hidden' : ''}`}>
+                      <button disabled={!selectedPlayer} onClick={() => AddToTeam(i)} ><i className="bi bi-arrow-left-square-fill text-3xl text-white"></i></button>
+                    </div>
+                      : null
+                  }
                 </div>
                 {
                   i === 0
                     ? <SearchList searchPlayer={searchPlayer} players={players} searching={searching} setSelectedPlayerState={setSelectedPlayerState} selectedPlayer={selectedPlayer} deleteFromTeam={deleteFromTeam} error={error} />
                     : null
                 }
-                </div>
+                </>
             ))
             : <Welcome createTeam={createTeam} />
         }

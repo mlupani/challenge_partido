@@ -8,9 +8,11 @@ export const useSearch = () => {
   const [error, setError] = useState('')
 
   const searchPlayer = async (name: string) => {
-    if (!name || name.length < 4) return false
+    if (!name || name.length < 4) {
+      setPlayers([])
+      return false
+    }
     setSearching(true)
-    setPlayers([])
     setError('')
     try {
       const { data } = await api.get<GetPlayersResp[]>(`?action=get_players&player_name=${name}&APIkey=${import.meta.env.VITE_API_KEY}`)

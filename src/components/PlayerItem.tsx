@@ -16,14 +16,12 @@ export const PlayerItem = ({ player, setSelectedPlayerState, selectedPlayer, del
                 <h5>{player.player_name}</h5>
                 <p className='text-gray-600 font-bold text-xs'>{player.team_name}</p>
             </div>
-            {
-                player.player_image
-                  ? <img className='w-11 h-11 rounded-full self-center mr-3 mx-1' src={player.player_image}></img>
-                  : null
-            }
+            <div className='flex'>
+              <img className='w-11 h-11 rounded-full self-center mr-3 mx-1' src={player.player_image ? player.player_image : 'https://apiv3.apifootball.com/badges/players/97489_t-messing.jpg'}></img>
             {
               del && <button className='font-bold' onClick={() => deleteFromTeam(player.player_id)}><i className="bi bi-trash-fill"></i></button>
             }
+            </div>
         </div>
     </div>
   )
