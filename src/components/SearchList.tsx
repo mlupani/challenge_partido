@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState } from 'react';
 import { Player } from '../interfaces/Team';
 import PlayerItem from './PlayerItem';
@@ -8,9 +7,11 @@ interface Props {
     players: Player[],
     searching: boolean,
     setSelectedPlayerState: (player: Player) => void
+    selectedPlayer: Player | null | undefined
+    deleteFromTeam: (playerId: string) => void
 }
 
-const SearchList = ({searchPlayer, players, searching, setSelectedPlayerState}: Props) => {
+const SearchList = ({searchPlayer, players, searching, setSelectedPlayerState, selectedPlayer, deleteFromTeam}: Props) => {
 
   const [search, setSearch] = useState('')
 
@@ -25,7 +26,7 @@ const SearchList = ({searchPlayer, players, searching, setSelectedPlayerState}: 
         </div>
         <div className='flex flex-col h-80 overflow-scroll justify-between mt-10'>
           {
-              players?.map(p => <PlayerItem player={p} setSelectedPlayerState={setSelectedPlayerState} />)
+              players?.map(p => <PlayerItem player={p} setSelectedPlayerState={setSelectedPlayerState} selectedPlayer={selectedPlayer} deleteFromTeam={deleteFromTeam} />)
           }
         </div>
     </div>

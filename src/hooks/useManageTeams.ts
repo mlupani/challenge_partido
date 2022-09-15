@@ -1,8 +1,9 @@
 import { useState } from "react"
-import { Team } from "../interfaces/Team"
+import { Player, Team } from "../interfaces/Team"
 
 const useManageTeams = () => {
     const [teams, setTeams] = useState<Team[]>([])
+    const [selectedPlayer, setSelectedPlayer] = useState<Player | null>()
 
     const createTeam = () => {
       const name = prompt('Ingresa el nombre del equipo')
@@ -37,11 +38,47 @@ const useManageTeams = () => {
       setTeams(newTeams)
     }
 
+    const deleteFromTeam = (playerId: string) => {
+      const newTeams: Team[] = teams.map(t => {
+        return {
+          teamName: t.teamName,
+          players: t.players.filter(p => p.player_id !== playerId)
+        }
+      })
+      setTeams(newTeams)
+    }
+
+    const AddToTeam = (teamId: number) => {
+      const team = teams.find((t,i)=> i === teamId)
+      let err = false
+      if(team?.players.length === 5) {
+        alert('El equipo solo puede tener hasta 5 jugadores')
+        return
+      }
+      teams.forEach(t => t.players.forEach(p => {
+        if( p.player_id === selectedPlayer?.player_id)  err = true
+      }))
+      if(err) {
+        alert('El jugador ya pertenece a un equipo')
+        return
+      }
+      if(team && selectedPlayer) team.players.push(selectedPlayer)
+      setSelectedPlayer(null)
+    }
+
+    const setSelectedPlayerState = (player:Player) => {
+      setSelectedPlayer(player)
+    }
+
     return {
         createTeam,
         deleteTeam,
         editTeam,
-        teams
+        deleteFromTeam,
+        AddToTeam,
+        setSelectedPlayerState,
+        teams,
+        selectedPlayer
     }
 
 }
