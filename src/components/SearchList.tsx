@@ -18,7 +18,7 @@ const SearchList = ({searchPlayer, players, searching, setSelectedPlayerState, s
   return (
     <div className='flex flex-col  justify-between w-60'>
         <div className='flex flex-row items-center justify-center mt-8'>
-          <input className='mr-3 text-center' type="text" value={search} onChange={(e) => setSearch(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && searchPlayer(search) } placeholder='Buscar jugador' />
+          <input className='mr-3 text-center form-control' type="text" value={search} onChange={(e) => setSearch(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && searchPlayer(search) } placeholder='Buscar jugador' />
           {
             searching ? <p>Buscando...</p> :
             <button onClick={() => searchPlayer(search)}>Buscar</button>

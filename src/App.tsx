@@ -7,7 +7,6 @@ import useSearch from './hooks/useSearch';
 function App() {
 
   const {teams, selectedPlayer, createTeam, deleteTeam, editTeam, deleteFromTeam, setSelectedPlayerState, AddToTeam } = useManageTeams()
-
   const { players, searchPlayer, searching } = useSearch()
 
   return (
