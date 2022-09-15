@@ -1,5 +1,5 @@
-import { Player } from '../interfaces/Team'
-import PlayerItem from './PlayerItem';
+import { Player } from '../interfaces/'
+import { PlayerItem } from './'
 
 interface Props {
     teamName: string;
@@ -10,7 +10,7 @@ interface Props {
     deleteFromTeam: (playerId: string) => void
 }
 
-const PlayerList = ({teamName, players, deleteTeam, editTeam, setSelectedPlayerState, deleteFromTeam}: Props ) => {
+export const PlayerList = ({ teamName, players, deleteTeam, editTeam, setSelectedPlayerState, deleteFromTeam }: Props) => {
   return (
     <div className='flex justify-center flex-col items-center mt-10 mx-8 min-h-96 w-80 border-2 border-blue-700'>
         <button onClick={() => deleteTeam(teamName)} >Eliminar equipo</button>
@@ -20,7 +20,7 @@ const PlayerList = ({teamName, players, deleteTeam, editTeam, setSelectedPlayerS
         </div>
         <ol className='w-60'>
             {
-                players?.map(player => <PlayerItem player={player} setSelectedPlayerState={setSelectedPlayerState} deleteFromTeam={deleteFromTeam} />)
+                players?.map(player => <PlayerItem key={player.player_id} player={player} setSelectedPlayerState={setSelectedPlayerState} deleteFromTeam={deleteFromTeam} />)
             }
         </ol>
         <p>Equipo formado: {teamName && players?.length ? 'OK' : 'No formado'} </p>
