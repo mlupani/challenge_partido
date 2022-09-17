@@ -11,7 +11,7 @@ interface Props {
 export const PlayerList = ({ teamName, players }: Props) => {
   const { deleteTeam, editTeam } = useContext(TeamContext)
   return (
-    <div className='flex flex-col justify-between mt-1 md:mt-10 mx-2 md:mx-8 h-max w-80 border-2 border-gray-700 bg-white shadow-2xl shadow-black opacity-100 rounded-lg'>
+    <div className='flex flex-col justify-between mt-2 md:mt-10 mx-2 md:mx-8 h-max w-80 border-2 border-gray-700 bg-white shadow-2xl shadow-black opacity-100 rounded-lg'>
         <div className="flex">
             <div className="col-10 flex items-center justify-center text-center"><h3 className='text-xl font-bold my-1'>{teamName}</h3></div>
             <div className="col-2 flex items-center justify-end gap-1 px-2">
