@@ -34,7 +34,7 @@ export const SearchList = ({ searchPlayer, searching, error, players }: Props) =
                 : null
           }
         </div>
-        <div className={`flex-col overflow-y-auto h-52 sm:h-96 mt-1 list-group mb-1 ${showList ? 'flex' : 'd-none'}`}>
+        <div className={`flex-col overflow-y-auto ${players.length ? 'h-52' : ''} sm:h-96 mt-1 list-group mb-1 ${showList ? 'flex' : 'd-none'}`}>
           {
               !error && players?.map(p => <PlayerItem player={p} key={p.player_id} />)
           }

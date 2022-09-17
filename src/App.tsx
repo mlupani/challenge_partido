@@ -10,11 +10,13 @@ function App () {
   return (
     <div id="div_body" className="w-full h-screen flex-col">
       <div id="teams" className='flex justify-center items-center flex-col md:flex-row '>
-        <div className='flex justify-center items-center my-2 sm:d-block md:hidden' id="add-mobile">
-          {
-            teams.length === 1 && <button className='btn btn-primary' onClick={createTeam} >Crea tu segundo equipo!</button>
-          }
-        </div>
+        {
+          teams.length === 1
+            ? <div className='justify-center items-center my-2 sm:flex md:hidden' id="add-mobile">
+                <button className='btn btn-primary' onClick={createTeam} >Crea tu segundo equipo!</button>
+            </div>
+            : null
+        }
         {
           teams.length
             ? teams.map((team, i) => (
