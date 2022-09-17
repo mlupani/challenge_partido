@@ -4,6 +4,6 @@
 @tailwind utilities;
 
 body {
-    background-image: url('bg-football.jpg');
+    background-image: url('/bg-football.jpg');
     background-size: cover;
 }
